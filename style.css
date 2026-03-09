@@ -1589,21 +1589,22 @@ button.is-active .icon-close {
     }
 }
 
-/* --- DEFINITIVNÍ SMRT PRO MODRÉ KOLEČKO PŘI DOTEKU NA MOBILU --- */
-button, 
-.navbar-toggler, 
-.icon-wrapper, 
-.material-symbols-outlined {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+
+/* --- DEFINITÍVNA SMRŤ PRE MODRÉ KOLEČKO */
+button[data-bs-toggle="offcanvas"],
+button[data-bs-toggle="offcanvas"]:focus,
+button[data-bs-toggle="offcanvas"]:active,
+button[data-bs-toggle="offcanvas"]:focus-visible,
+button[aria-label="otevřít menu"] {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background-color: transparent !important;
     -webkit-tap-highlight-color: transparent !important;
-    -webkit-touch-callout: none !important;
-    user-select: none !important; /* Zabrání i nechtěnému označení ikony jako textu */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
-/* Pojistka, aby to neudělalo stín ani při aktivním kliku */
-button:active, 
-.navbar-toggler:active {
-    background-color: transparent !important;
-    box-shadow: none !important;
-    outline: none !important;
+/* pojistak pro ikonku ve vnitr*/
+button[data-bs-toggle="offcanvas"] * {
+    -webkit-tap-highlight-color: transparent !important;
 }
