@@ -1,0 +1,1520 @@
+:root {
+    /*colors*/
+    --primary: #FF8679;
+    --primary-shadow: #B35D54;
+    --text: #D1D1D1;
+    --hero-text: #FFFFFF;
+    --nav-items: #FFFFFF;
+    --nav-background: #000000;
+    --background: #121212;
+    --surface: #222222;
+    --card-disadvantage:#D9D9D9;
+    --map-btn:#080808;
+
+    /*font*/
+    --font-main: 'Barlow Semi Condensed', sans-serif;
+    --ls-tight: -0.03em;
+
+    /*font styles*/
+    --fw-regular: 400;      /* Body text */
+    --fw-medium: 500;       /* Subheadings */
+    --fw-semibold: 600;     /* Menu items */
+    --fw-bold: 700;         /* Section labels */
+    --fw-extrabold: 800;    /* Hero text */
+
+    /* Hlavní nadpisy a labely */
+
+    /* clamp(minimální velikost, preferovaná, maximální velikost) */
+    --fs-hero: clamp(2.5rem,calc(8vw + 1rem), 6rem);
+    --fs-label: 4rem;       /* 64px / 16 = 4rem */
+    --fs-card-label: 2.5rem; /* 40px / 16 = 2.5rem */
+    --fs-card-text: 1.125rem;
+
+
+    /* Texty a podnadpisy */
+    --fs-subheading: 1.5rem; /* 24px / 16 = 1.5rem */
+    --fs-body: 1.125rem;     /* 18px / 16 = 1.125rem */
+    --fs-nav: 1rem;          /* 16px / 16 = 1rem */
+
+    /*vyska menu*/
+    --header-height: 6rem;
+}
+
+/*body settings*/
+body {
+    font-size: var(--fs-body); /* 18px / 16 = 1.125rem */
+    font-family: var(--font-main);
+    background-color: var(--background);
+    color: var(--text);
+    font-weight: var(--fw-regular);
+    line-height: 1.4;       /* 140 % jen pro body text */
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* prednastaveny styly */
+
+.section-label {
+    font-size: var(--fs-label); /* 64px / 16 = 4rem */
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-tight);
+    color: var(--primary);
+    text-transform: uppercase;
+    line-height: normal;
+    margin-bottom: 2rem;
+}
+
+.section-label:first-child {
+    margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+    .section-label:first-child {
+        margin-top: 2rem; /* Na mobilu se mezera zmenší na polovinu */
+    }
+}
+
+.section-label-center {
+    text-align: center;
+}
+
+
+.sub-heading {
+    font-size: var(--fs-subheading); /* 24px / 16 = 1.5rem */
+    font-weight: var(--fw-medium);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+.sub-heading-center {
+    text-align: center;
+}
+
+.sub-heading-offset {
+    margin-top: 8rem;
+    font-weight: var(--fw-bold);
+    font-size: calc(var(--fs-subheading) + 0.5rem);
+}
+
+.section-text {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    line-height: 1.4;
+}
+
+.nav-link {
+    font-size: var(--fs-nav); /* 16px / 16 = 1rem */
+    font-weight: var(--fw-semibold);
+    color: var(--nav-items);
+    text-transform: uppercase;
+    line-height: normal;
+}
+
+/* hodne konkretni selektor(nechceme pouzit !important to je fuj */
+nav.navbar .navbar-nav .nav-link {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+body .navbar,
+nav.navbar {
+    z-index: 1060; 
+}
+
+#offcanvasNavbar.offcanvas-top {
+    top: 6rem; 
+    height: calc(100vh - var(--header-height));
+}
+
+/* Wrapper nemá žádné centrování, drží jen relative pozici pro křížek */
+.icon-wrapper {
+    position: relative;
+    display: inline-flex; /* inline-flex lépe drží ikony na středu */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Obě ikony mají stejnou plynulou animaci */
+.icon-wrapper .material-symbols-outlined {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+}
+
+/* --- VÝCHOZÍ STAV (Zavřeno) --- */
+.icon-menu {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.icon-close {
+    position: absolute; /* Křížek leží přes menu ikonu */
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+/* --- AKTIVNÍ STAV (Otevřeno - přidáno přes JS) --- */
+button.is-active .icon-menu {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+button.is-active .icon-close {
+    opacity: 1;
+    transform: rotate(0deg);
+    color: var(--primary);
+}
+
+/* :not(.is-active) zaručí, že se to aplikuje JEN na zavřené menu (hamburger) */
+button:not(.is-active):hover .icon-menu,
+button:not(.is-active):focus-visible .icon-menu {
+    color: var(--primary);
+}
+
+/* Pojistka pro plynulou změnu barvy při najetí */
+.icon-menu {
+    transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+}
+
+
+/*tlacitko na odkaz na mapu v offcanvasu*/
+.mobile-map-btn {
+    display: block; /* Zajistí, že tlačítko bude přes celou šířku menu */
+    background-color: var(--primary);
+    color: var(--map-btn);
+    text-align: center;
+    padding: 1rem;
+    border-radius: 20px;
+    font-weight: var(--fw-bold);
+    font-size: calc(var(--fs-nav) * 1.125);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+/* efekt pri najeti nebo tuknuti pc/mb */
+.mobile-map-btn:hover,
+.mobile-map-btn:focus {
+    background-color: var(--text);
+    color: var(--map-btn);
+}
+
+.nav-link:hover{
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+
+
+/* zyvrazneni casti textu */
+.text-highlight {
+    color: var(--primary);
+}
+
+.text-important {
+    font-weight: var(--fw-bold);
+}
+
+/*toto dela to že sekce ja uprosted na celou stanku zarizeni aplikuj na <section class*/
+.full-page-section {
+    height: auto;
+    display: flex;
+    align-items: flex-start; 
+    padding-top: 4rem; /*odsazení shora, aby to nebylo schované pod menu */
+    padding-bottom: 4rem;
+}
+
+#uvod {
+    scroll-margin-top: var(--header-height);
+}
+
+
+.nav-logo {
+    display: block;
+    max-height: 4rem; /* max velikost loga */
+    width: auto;
+    max-width: 100%;
+}
+
+.navbar {
+    height: var(--header-height);
+    background-color: var(--nav-background);
+}
+
+.navbar .material-symbols-outlined {
+    color: var(--nav-items); /* bile ikonky menu */
+    
+}
+
+/*PRO EXTRÉMNĚ MALÉ DISPLEJE */
+@media (max-width: 345px) {
+    /* zmenseni loga*/
+    .nav-logo {
+        max-height: 2.8rem; 
+    }
+
+    .navbar-brand {
+        /* z nejakeho duvodu bylo logo vice doprava docela spinacke reseni ale co uz */
+        margin-left: -12px; 
+    }
+
+    /*zmenseni hamburger tlacitka */
+    .navbar .material-symbols-outlined {
+        font-size: 3rem;
+    }
+
+    /* mensi mezery */
+    .navbar .container {
+        padding-left: 1.5rem;
+        padding-right: 1,5rem;
+
+    }
+
+    .hero-title {
+        --fs-hero: clamp(1.8rem, 15vw, 3rem);
+        line-height: 1.1;
+    }
+    
+
+}
+
+/* plynulý přechod (aby se to netočilo skokově) */
+.navbar .material-symbols-outlined {
+    transition: all 0.3s ease;
+    cursor: pointer; /* Aby se ukázala ručička */
+}
+
+.navbar .material-symbols-outlined:hover,
+.navbar .material-symbols-outlined:focus {
+    color: var(--primary);
+}
+
+.offcanvas-header .material-symbols-outlined{
+    color: var(--nav-items);
+}
+
+/* --- OFFCANVAS ZAVÍRACÍ TLAČÍTKO --- */
+
+/* Nastavení tlačítka*/
+.offcanvas-header button {
+    transition: transform 0.3s ease; /* Plynulá rotace */
+    outline: none; /* Odstraní rámeček při kliknutí */
+}
+
+/* 2. Nastavení ikony (barva, velikost, stín) */
+.offcanvas-header button span {
+    font-size: 3.5rem;
+    color: var(--nav-items);
+    transition: color 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Jemný stín */
+}
+
+/* Otočení tlačítka */
+.offcanvas-header button:hover,
+.offcanvas-header button:focus {
+    transform: rotate(90deg); 
+}
+
+/* Přebarvení ikony na lososovou */
+.offcanvas-header button:hover span,
+.offcanvas-header button:focus span {
+    color: var(--primary);
+}
+
+
+.nav-btn-box {
+    font-size: calc(var(--fs-nav) * 1.125);
+    font-weight: var(--fw-bold);
+    width: 10rem;
+    height: 4rem;
+    border-radius: 20px;
+    background-color: var(--primary);
+    color: var(--map-btn);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;      /* Svisle na střed */
+    justify-content: center;   /* Vodorovně na střed */
+    text-decoration: none;
+    text-align: center;       /* Pojistka pro zalomený text */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+
+.nav-btn-box:hover,
+.nav-btn-box:focus {
+    background-color: var(--text);
+    color: var(--map-btn);
+}
+
+
+.hero-section {
+    margin-top: var(--header-height);
+    display: flex;
+    align-items: center;      /* Vertikální centr */
+    height: 50dvh; /*velikost pro mobily*/
+    width: 100%;
+
+    background: 
+        /* 1. Ztmavení SHORA a ZDOLA (pro splynutí s webem) */
+        linear-gradient(to bottom, 
+            rgb(0, 0, 0) 0%, 
+            rgba(0, 0, 0, 0.3) 40%, 
+            rgba(0, 0, 0, 0.3) 60%, 
+            rgb(0, 0, 0) 100%),
+        /* 2. Ztmavení ZLEVA a ZPRAVA (pro hloubku a čitelnost) */
+        linear-gradient(to right, 
+            rgb(0, 0, 0) 0%, 
+            rgba(0, 0, 0, 0) 50%, 
+            rgb(0, 0, 0) 100%),
+        /* 3. Samotný obrázek */
+        url("img/Hero-picture.webp") no-repeat center center;
+    
+
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* 2. PODMÍNKA (POČÍTAČ) - Tohle přepíše základ, ale jen na velkém monitoru */
+@media (min-width: 992px) {
+    .hero-section {
+        min-height: 80dvh; /* Na PC to nafoukne zpátky na velké */
+    }
+}
+
+.hero-title {
+    max-width: 100%;
+    text-transform: uppercase;
+    color: var(--hero-text);
+    font-size: var(--fs-hero);
+    font-weight: var(--fw-extrabold);
+    text-align: left;
+    margin-bottom: var(--header-height);
+    line-height: 1.2;
+    width: fit-content;       /* Zajistí, že box kolem textu nebude širší než text samotný */
+
+    display: inline-block;    /* Bez tohoto transformace nefunguje správně */
+    transform: scaleY(1.05);
+    transform-origin: left;   /* Zajistí, že se text natahuje zleva a zůstane lícovat s logem */
+    
+    /* --- POJISTKA --- */
+    -webkit-font-smoothing: antialiased; /* Aby to po tom natažení nebylo rozmazané */
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  
+  /* Velikost a zobrazení */
+  font-size: 3rem;
+  display: inline-block;
+  
+  width: auto;
+  line-height: 1;
+}
+
+.offcanvas {
+    background-color: var(--background);
+    color: var(--nav-items);
+}
+
+.offcanvas-header button {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    display: flex;
+    align-items: center;    /* Vycentruje ikonu svisle */
+    justify-content: center; /* Vycentruje ikonu vodorovně */
+    line-height: 0;
+}
+
+
+.offcanvas-header .material-symbols-outlined {
+    font-size: 3rem; /* Velikost ikony */
+    display: block;
+    margin: 0;
+}
+
+/*omezeni sirky textoveho bloku*/
+.text-content-box {
+    max-width: 35rem; /* Aby text nebyl přes celou šířku */
+}
+
+/*video*/
+.video-wrapper {
+    position: relative;
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.promo-video {
+    width: 100%;
+    height: 100%; 
+    display: block; 
+    object-fit: cover;
+}
+
+
+.video-style {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 1199px) {
+    .video-style {
+        aspect-ratio: 4 / 5; 
+    }
+}
+
+/* NA MOBILU: Opět automatický ořez na ležato pod textem */
+@media (max-width: 991px) {
+    .video-style {
+        aspect-ratio: 16 / 9; 
+    }
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    /*Gradient z průhledné -> do lososové -> do průhledné */
+    background: linear-gradient(to right, transparent, var(--primary), transparent);
+    opacity: 0.4;
+    margin: 2rem auto;
+    /* Vycentruje linku */
+    width: 80%;
+}
+
+
+/*------------------------TIMELINE-----------------------------------*/
+.timeline-wrapper {
+    position: relative;
+    max-width: 62.5rem; /* 1000px */
+    margin: 4rem auto 0 auto;
+    padding: 1.25rem 0;
+}
+
+/* Hlavní vertikální čára uprostřed */
+.timeline-line {
+    position: absolute;
+    width: 0.25rem; /* 4px */
+    background-color: var(--primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Jeden řádek osy */
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: center; 
+    margin-bottom: 12rem;
+    width: 100%;
+    z-index: 2;
+}
+
+.timeline-item.left { justify-content: flex-start; }
+.timeline-item.right { justify-content: flex-end; }
+.timeline-item:last-child { margin-bottom: 0; }
+
+/* Kolečko s ikonou - PEVNĚ ZAFIXOVANÉ NA STŘED */
+.timeline-icon-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+    background-color: var(--background);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+/* Přepsání velikosti ikon */
+.timeline-icon-circle .material-symbols-outlined,
+.timeline-icon-circle .bi {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Horizontální spojovací čára (Větvička) */
+.timeline-branch {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0.25rem; /* 4px */
+    background-color: var(--primary);
+    width: 3.125rem; /* 50px */
+    z-index: 2;
+}
+
+/* Odskočení větvičky ze středu */
+.timeline-item.left .timeline-branch {
+    right: 50%;
+}
+
+.timeline-item.right .timeline-branch {
+    left: 50%;
+}
+
+/* Karta (obsah) */
+.timeline-content {
+    flex: 0 0 calc(50% - 3.125rem); /* 50px -> 3.125rem */
+    max-width: calc(50% - 3.125rem);
+    width: 100%;
+    border: 1px solid rgba(255, 134, 121, 0.5);
+    border-radius: 0.75rem; /* 12px */
+    padding: 1.875rem; /* 30px */
+    background-color: var(--background); 
+    text-align: left;
+    position: relative;
+    z-index: 3;
+}
+
+.timeline-title {
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 0.9375rem; /* 15px */
+}
+
+.timeline-text {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* Responzivita osy (Mobilní zařízení) */
+@media screen and (max-width: 768px) {
+    .timeline-line {
+        left: 1.5rem; /* 24px */
+        transform: translateX(0);
+    }
+
+    .timeline-item.left, .timeline-item.right {
+        justify-content: flex-end;
+    }
+
+    .timeline-icon-circle {
+        left: 1.5rem; /* 24px */
+        transform: translate(-50%, -50%);
+    }
+
+    .timeline-item.left .timeline-branch, 
+    .timeline-item.right .timeline-branch {
+        left: 1.5rem; /* 24px */
+        right: auto;
+        width: 1.875rem; /* 30px */
+    }
+
+    .timeline-content {
+        flex: 0 0 calc(100% - 3.375rem); /* 54px -> 3.375rem */
+        max-width: calc(100% - 3.375rem);
+        padding: 1.25rem; /* 20px */
+    }
+}
+
+/* Vyplnění kolečka a přidání jemné záře (barva odvozena z tvého borderu) */
+.timeline-item:hover .timeline-icon-circle {
+    background-color: var(--primary);
+    box-shadow: 0 0 15px rgba(255, 134, 121, 0.6); 
+}
+
+/* Změna barvy ikony, aby byla na vyplněném kolečku vidět */
+.timeline-item:hover .timeline-icon-circle .material-symbols-outlined,
+.timeline-item:hover .timeline-icon-circle .bi {
+    color: var(--background);
+}
+
+/* Transformace boxu vpravo/vlevo (jemný posun nahoru + stín + zvýraznění okraje) */
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary);
+}
+
+
+/*------pro obe osy*/
+
+/*Nastavení plynulého přechodu (aby to neskákalo) */
+.timeline-icon-circle, 
+.timeline-icon-circle *, 
+.timeline-content,
+.features-dot, 
+.features-dot *, 
+.features-card {
+    transition: all 0.3s ease-in-out;
+}
+
+/*-----------------*/
+
+/*-----------------2ns timeline----------------------------------*/
+
+.features-timeline-wrapper {
+    position: relative;
+    max-width: 100%; /* 1200px (větší šířka pro 4 bloky) */
+    margin: 4rem auto 0 auto;
+    z-index: 1;
+}
+
+/* Ta hlavní horizontální čára */
+.features-line {
+    position: absolute;
+    top: 1.125rem; /* Vycentrováno přesně na střed teček */
+    left: 12.5%; /* Začíná ve středu prvního sloupce */
+    right: 12.5%; /* Končí ve středu posledního sloupce */
+    height: 0.25rem; /* 4px */
+    background-color: var(--primary);
+    z-index: -1;
+}
+
+/* Obal pro 4 sloupce */
+.features-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Jeden sloupec = Tečka + Větvička + Karta */
+.features-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Přidáno pro jistější chování */
+}
+
+/* Bod na ose */
+.features-dot {
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    background-color: var(--background);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    margin-bottom: 0;
+    z-index: 4; /* Musí být nahoře, aby překrýval čáry */
+    position: relative;
+
+    /* --- PŘIDÁNO PRO VYCENTROVÁNÍ IKON (stejně jako v první ose) --- */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Stylování velikosti a barvy ikon uvnitř features-dot*/
+.features-dot .material-symbols-outlined,
+.features-dot .bi {
+    font-size: 1.3rem; /* Záměrně trošku menší (1.3rem) než v první ose (1.6rem), protože kolečko je menší (40px vs 48px) */
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Propojovací čárka dolů ke kartě */
+.features-branch {
+    width: 0.25rem; /* 4px tloušťka */
+    height: 2.5rem; /* Krátká větvička pro liché položky */
+    background-color: var(--primary);
+    z-index: 2;
+}
+
+/* SUDÉ KARTY VISÍ NÍŽE (ZIG-ZAG EFEKT) */
+.features-item:nth-child(even) .features-branch {
+    height: 6rem; /* Dlouhá větvička pro sudé položky */
+}
+
+/* Samotná karta s textem */
+.features-card {
+    width: 100%;
+    border: 1px solid rgba(255, 134, 121, 0.4);
+    background-color: var(--background);
+    padding: 1.5rem;
+    text-align: left;
+    border-radius: 2px;
+    z-index: 3;
+}
+
+.features-title {
+    color: var(--primary);
+    font-size: 1.125rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 0.75rem;
+}
+
+.features-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* Vyplnění tečky a záře */
+.features-item:hover .features-dot {
+    background-color: var(--primary);
+    box-shadow: 0 0 15px rgba(255, 134, 121, 0.6);
+}
+
+/* Změna barvy ikony */
+.features-item:hover .features-dot .material-symbols-outlined,
+.features-item:hover .features-dot .bi {
+    color: var(--background);
+}
+
+/* Transformace karty (jemný posun nahoru + stín + zvýraznění okraje) */
+.features-item:hover .features-card {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary);
+}
+
+/* Responzivita pro mobil a tablet (Přebuduje to na vertikální osu) */
+@media screen and (max-width: 991px) {
+    .features-timeline-wrapper {
+        margin-top: 2rem;
+    }
+
+    .features-line {
+        /* Čára se přesune doleva a otočí svisle */
+        top: 0;
+        bottom: 0;
+        left: 1.5rem; /* Přesně sladěno s první osou! */
+        width: 0.25rem;
+        height: 100%;
+        right: auto;
+    }
+
+    .features-container {
+        flex-direction: column;
+        gap: 0; /* Zrušení mezery gridu, řídíme to marginem u karet */
+    }
+
+    .features-item {
+        flex-direction: row; /* Poskládá tečku, větev a kartu vedle sebe */
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        margin-bottom: 3rem; /* Mezera mezi kartami */
+        width: 100%;
+    }
+
+    .features-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .features-dot {
+        position: absolute;
+        left: 1.5rem; /* Přesně na střed svislé čáry */
+        top: 50%; /* Na střed karty */
+        transform: translate(-50%, -50%);
+        margin-bottom: 0;
+    }
+
+    /* Větvička teď vede zleva doprava (horizontálně) */
+    .features-branch {
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.875rem; /* Délka větvičky k boxu */
+        height: 0.25rem; /* Tloušťka větvičky */
+    }
+
+    /* Zrušení delších větviček pro sudé položky na mobilu (všechny stejně dlouhé) */
+    .features-item:nth-child(even) .features-branch {
+        height: 0.25rem;
+        width: 1.875rem;
+    }
+
+    .features-card {
+        margin-left: 0;
+        width: calc(100% - 3.375rem); /* Šířka karty s odečtením tečky a větve */
+    }
+}
+
+/*---------------------------GALERIE---------------------------------*/
+
+/* Základní nastavení obrázků v galerii */
+.gallery-img {
+    overflow: hidden; /* Ořízne obrázek podle rohů */
+    height: 250px; /* Minimální výška pro mobil */
+    position: relative;
+}
+
+.gallery-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Zajistí, že se fotka nedeformuje */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Třída pro ten velký obrázek */
+.gallery-img.img-3 {
+    width: 100%;         /* Roztáhne ho na šířku sloupce */
+    display: block;      /* Pojistka, aby pod ním nebyla mezera */
+}
+
+
+/* Efekt při najetí (volitelné) */
+.gallery-img:hover img {
+    transform: scale(1.05);
+}
+
+/* 1. MOBILNÍ ZÁKLAD (0px - 767px) */
+/* Sem to, co platí, když je všechno pod sebou v jednom sloupci */
+@media (max-width: 767px) {
+
+    .gallery-img{
+        height: 300px;
+    }
+
+    .gallery-img.img-1 {
+        border-radius: 30px 30px 0 0;
+        
+    }
+
+    .gallery-img.img-3 {
+        border-radius: 0 0 30px 30px;
+        
+    }
+}
+
+/* 2. TABLET (768px - 991px) */
+/* Tady se to láme na 2 sloupce, musíme upravit rohy nahoře */
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+
+    .gallery-img.img-1 {
+        border-radius: 30px 0 0 0;
+    }
+
+    .gallery-img.img-2 {
+        border-radius: 0 30px 0 0;
+    }
+
+    .gallery-img.img-3 {
+        border-radius: 0 0 30px 30px;
+        height: 516px;
+    }
+}
+
+/* 3. DESKTOP (992px a víc) */
+/* Finální rozložení, 3 sloupce, specifická výška */
+@media (min-width: 992px) {
+    .gallery-img.img-1 {
+        border-radius: 30px 0 0 0;
+    }
+
+    .gallery-img.img-3 {
+        height: 516px;
+        border-radius: 0 30px 30px 0;
+    }
+
+    .gallery-img.img-4 {
+        border-radius: 0 0 0 30px;
+    }
+}
+
+
+
+/*---------------------------KONEC GALERIE---------------------------------*/
+
+/* =========================================
+   GALLERY MODAL (FULLSCREEN)
+   ========================================= */
+
+#gallery-modal {
+    z-index: 1070;
+}
+
+/* 1. Rámec modalu a pozadí */
+#gallery-modal .modal-dialog {
+    max-width: 100%;       /* Roztáhne modal na celou šířku */
+    margin: 0;             /* Odstraní výchozí okraje */
+    height: 100%;          /* Roztáhne na celou výšku */
+}
+
+#gallery-modal .modal-content {
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    border: none;
+    border-radius: 0;      /* Ostré rohy pro fullscreen feel */
+}
+
+/* Úplná tma pro pozadí modalu */
+.modal-backdrop.show {
+    opacity: 0;
+}
+
+#gallery-modal .modal-body {
+    height: 100%;
+    padding: 0;
+    
+    /* Flexbox pro vycentrování celého obsahu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Odsazení shora, aby galerie nelezla pod menu (6rem = výška hlavičky) */
+    padding-top: var(--header-height); 
+}
+
+/* 2. Carousel Kontejner */
+#carouselGallery {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/*aby položky carouselu byly přes celou výšku */
+#carouselGallery .carousel-inner, 
+#carouselGallery .carousel-item {
+    height: 100%;
+}
+
+/* 3. Samotné OBRÁZKY */
+#carouselGallery .carousel-item img {
+   
+    width: auto; 
+    height: auto;
+    
+    /* Maximální limity */
+    max-height: 85vh;      /* Aby se vešel na výšku */
+    max-width: 80%;        /* 10 % místa na každé straně pro šipky */
+    
+    /* Zachování poměru stran - fotka se nikdy nedeformuje */
+    object-fit: contain;
+    
+    /* Absolutní centrování obrázku v prostoru */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Jemný stín pro oddělení od pozadí */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+}
+
+/* 4. ŠIPKY (Ovládání) */
+#carouselGallery .carousel-control-prev, 
+#carouselGallery .carousel-control-next {
+    width: 10%;            /* Klikací zóna po stranách */
+    opacity: 1;            /* Stále viditelné */
+    z-index: 1050;
+}
+
+/* Styl ikon šipek */
+#carouselGallery .carousel-control-prev span, 
+#carouselGallery .carousel-control-next span {
+    font-size: 4rem;       /* Velké šipky */
+    color: #ffffff;        /* ZÁKLAD: Bílá */
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
+}
+
+/* Efekt při najetí (Hover) - Lososová */
+#carouselGallery .carousel-control-prev:hover span, 
+#carouselGallery .carousel-control-next:hover span {
+    color: var(--primary); 
+    transform: scale(1.1); /* Lehké zvětšení */
+}
+
+/* 5. TLAČÍTKO ZAVŘÍT (Křížek) */
+/* Cílíme na ten button v modal-body */
+#gallery-modal .modal-body > button {
+    top: 1.5rem;          /* Odsazení od horní hrany (pod menu) */
+    right: 2rem;        /* Odsazení zprava */
+    z-index: 1060;      /* Musí být úplně nahoře */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Styl ikony křížku */
+#gallery-modal .modal-body > button span {
+    font-size: 3.5rem;
+    color: white;        /* ZÁKLAD: Bílá */
+    transition: color 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+
+/* Efekt při najetí na křížek */
+#gallery-modal .modal-body > button:hover span {
+    color: var(--primary); /* Lososová */
+}
+
+#gallery-modal .modal-body > button:hover {
+    transform: rotate(90deg); /* Efektní otočení */
+}
+
+/* Úprava pro mobily (aby obrázky nebyly moc malé a šipky byly uvnitř) */
+@media (max-width: 768px) {
+    
+    /* 1. Obrázek roztáhneme na 100%, tím se dostane POD šipky */
+    #carouselGallery .carousel-item img {
+        max-width: 100%; 
+    }
+
+    /* 2. Šipky trochu zmenšíme, ať na mobilu nezavazí */
+    #carouselGallery .carousel-control-prev span, 
+    #carouselGallery .carousel-control-next span {
+        font-size: 2.5rem; 
+    }
+
+    /* 3. Tvoje nastavení křížku */
+    #gallery-modal .modal-body > button {
+        top: 1rem;       
+        right: 1rem;
+    }
+}
+
+/* =========================================
+   CENÍK - KARTA (Pricing Card)
+   ========================================= */
+
+/* 1. RÁMEČEK A POZADÍ KARTY */
+.pricing-card {
+    background-color: var(--surface);        /* Tmavé pozadí */
+    border: 1px solid var(--primary);
+    cursor: pointer;
+    border-radius: 20px;              
+    padding: 2.5rem 2.5rem;             /* Vnitřní odsazení */
+    padding-bottom: 2.5rem;
+    height: 100%; /* Aby byly všechny karty stejně vysoké */
+
+    min-height: 35rem;
+    max-width:25rem ;
+
+    
+    /* Flexbox pro zarovnání obsahu na střed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;       
+    transition: transform 0.6s ease;  /* Animace při pohybu */
+}
+
+/* Efekt při najetí myší - karta se lehce zvedne */
+.pricing-card:hover,
+.pricing-card:focus {
+    transform: scale(1.01) translateY(-2px);
+}
+
+/* 2. HLAVIČKA (Název a Cena) */
+.card-label {
+    text-align: center;
+    margin-bottom: 2.5rem; /* Odstup od seznamu */
+    width: 100%;
+}
+
+.pricing-card .title {
+    font-size: 3.2rem;
+    font-weight: var(--fw-extrabold);
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-card .price {
+    font-size: 2.8rem;
+    font-weight: var(--fw-bold);
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+}
+
+.pricing-card .sale-price {
+    font-size: 1.3rem;
+    color: var(--primary-shadow); /* Lososová barva pro slevu */
+    font-weight: var(--fw-medium);
+}
+
+/* 3. SEZNAM VÝHOD (Membership Details) */
+.membership-details {
+    list-style: none; /* Odstraní tečky */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 300px; /* Aby text nebyl roztažený moc do šířky */
+}
+
+/* Společný styl pro všechny řádky */
+.membership-details li {
+    display: flex;
+    align-items: center; /* Zarovná ikonu a text na střed */
+    margin-bottom: 1.4rem;
+    font-size: 1.2rem;
+    color: var(--text);      /* Světle šedý text */
+    line-height: 1.4;
+}
+
+/* Ikonky (Check a Cross) */
+.membership-details .material-symbols-outlined {
+    margin-right: 12px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* Styl pro VÝHODY (fajfka) */
+.membership-details .check {
+    color: var(--primary); /* Lososová */
+}
+
+/* Styl pro NEVÝHODY (přeškrtnuté) */
+.disadvantage .disAdvntg-text{
+    color: var(--text);     /* Tmavě šedá barva textu */
+    text-decoration: line-through; /* Přeškrtnutí */
+}
+
+.disadvantage .close  {
+    color: var(--card-disadvantage);
+    text-decoration: none; /* Zruší přeškrtnutí samotného křížku */
+    display: inline-block; 
+}
+
+.card-btn {
+    margin-top: auto; /*Tlačí tlačítko vždy úplně dolů, bez ohledu na délku seznamu */
+    background-color: var(--primary);
+    color: var(--map-btn); /* Záměrně tmavý text pro vysoký kontrast */
+    font-weight: var(--fw-bold);
+    font-size: 1.125rem;
+    padding: 1.25rem 2rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%; /* Vyplní dostupný prostor */
+    max-width: 18rem; /* Ale nezvětší se do extrému */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Efekt při najetí */
+.card-btn:hover,
+.card-btn:focus {
+    background-color: var(--text); /* Zesvětlá/Zešedne */
+    color: var(--map-btn);
+    transform: scale(1.01); /* Lehce se nafoukne */
+}
+
+/* =========================================
+   RESPONZIVITA CENÍKU (Media Queries)
+   ========================================= */
+
+/* 1. TABLET (MD: šířka menší než 992px) */
+/* Tady budou 2 karty vedle sebe. Trochu zmenšene písmo. */
+@media (max-width: 991px) {
+    .pricing-card {
+        width: 100%;
+        min-height: 25rem; /* O něco menší výška než na PC */
+        padding: 2rem 1.5rem; /* Menší vnitřní odsazení */
+    }
+    
+    .pricing-card .title {
+        font-size: 3rem; /* Zmenšení nadpisu*/
+    }
+    
+    .pricing-card .price {
+        font-size: 2.5rem; /* Zmenšení ceny */
+    }
+}
+
+/* 2. MOBIL (SM: šířka menší než 768px) */
+/* Tady je 1 karta pod sebou */
+@media (max-width: 767px) {
+    .pricing-card {
+        min-height: auto; 
+        width: 80%;
+        padding-bottom: 3rem;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+    .pricing-card .title {
+        font-size: 2.5rem; /* Ještě menší nadpis, aby se nelámal */
+    }
+
+    .pricing-card .price {
+        font-size: 2.2rem;
+    }
+
+    .membership-details li {
+        font-size: 1rem; /* Vrátíme text seznamu na normální velikost */
+    }
+}
+
+/* =========================================
+   FAQ ACCORDION (Časté dotazy)
+   ========================================= */
+
+/* 1. Hlavní obal celého accordionu */
+.custom-accordion {
+    border: 1px solid var(--primary); /* Lososový rámeček kolem dokola */
+    border-radius: 20px;            /* Kulaté rohy */
+    overflow: hidden;                 /* Aby rohy položek nepřečuhovaly přes obal */
+    background-color: transparent;
+}
+
+/* 2. Jednotlivá položka (řádek) */
+.custom-accordion .accordion-item {
+    background-color: var(--surface);
+    border: none;
+    border-bottom: 1px solid var(--primary); /* Čára mezi položkami */
+}
+
+/* Poslední položka nebude mít čáru dole, aby nebyla dvojitá s hlavním rámečkem */
+.custom-accordion .accordion-item:last-child {
+    border-bottom: none;
+}
+
+/* 3. Tlačítko (Samotná otázka) */
+.custom-accordion .accordion-button {
+    background-color: transparent;
+    color: #ffffff;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
+    box-shadow: none; /* Vypne modrý kroužek při kliknutí */
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Tlačítko, když je OTEVŘENÉ */
+.custom-accordion .accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* 4. ODSTRANĚNÍ ŠIPKY VPRAVO */
+.custom-accordion .accordion-button::after {
+    display: none;
+}
+
+/* 5. TVORBA VLASTNÍ IKONY + a - VLEVO */
+/* Výchozí stav (ZAVŘENO) = znak PLUS */
+.custom-accordion .accordion-button::before {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-right: 1.5rem;
+    color: #ffffff;
+}
+
+/* Stav po kliknutí (OTEVŘENO) = znak MÍNUS */
+.custom-accordion .accordion-button:not(.collapsed)::before {
+    content: '−';
+    color: #ffffff;
+}
+
+/* 6. Text odpovědi */
+.custom-accordion .accordion-body {
+    color: var(--text); /* Světle šedá pro lepší čitelnost */
+    padding: 0 2rem 1.5rem 3.8rem; /* Levý padding musí být větší, aby text lícoval pod nadpisem a ne pod pluskem */
+    line-height: 1.6;
+}
+
+/* =========================================
+   SEKCE KONTAKTY
+   ========================================= */
+
+/* Obal pro kontaktní informace */
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Mezera mezi adresou, telefonem atd. */
+}
+
+/* Jeden řádek (Ikona vlevo + Text vpravo) */
+.contact-item {
+    display: flex;
+    align-items: center; /* Srovná ikonu a texty na střed do jedné roviny */
+    gap: 1.5rem;         /* Mezera mezi velkou ikonou a textem */
+}
+
+/* Velká lososová ikona vlevo (Adresa, Telefon, Email) */
+.contact-item .contact-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    font-variation-settings: 'FILL' 0, 'wght' var(--fw-semibold); /* Udělá ikonu plnou, ne jen obrys */
+}
+
+/* Textová část (Nadpis a detail) */
+.contact-text {
+    display: flex;
+    flex-direction: column; /* Hodí nadpis a detail pod sebe */
+}
+
+.contact-text .contact-title {
+    font-weight: var(--fw-bold);
+    color: var(--text);
+    font-size: calc(var(--fs-body) + 0.5rem);
+    margin-bottom: 0.2rem;
+}
+
+.contact-text .contact-detail {
+    color: var(--text);
+    font-size: var(--fs-body);
+}
+
+/* =========================================
+   SOCIÁLNÍ SÍTĚ (Zabití modrého Bootstrapu)
+   ========================================= */
+.social-icons {
+    margin-left: 0.3rem;
+    display: flex;
+    gap: 3rem; /* Mezery mezi ikonami (Instagram, X, FB) */
+    align-items: center;
+}
+
+/* Vynucený přepis Bootstrap odkazu */
+.social-link {
+    color: var(--primary) ; 
+    font-size: 2.2rem;     
+    text-decoration: none;
+    display: inline-block; 
+}
+
+/* Efekt při najetí - jen posun nahoru, barva zůstane lososová */
+.social-link:hover {
+    /*transform: translateY(-5px) scale(1.1);*/
+    color: var(--primary-shadow);/* Pojistka, aby to nezmodralo při hoveru */
+}
+
+/* =========================================
+   MAPA (Interaktivní Iframe)
+   ========================================= */
+.map-container {
+    width: 100%;
+    height: 500px; 
+    border-radius: 20px;
+    overflow: hidden; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+#map {
+    scroll-margin-top: var(--header-height);
+}
+
+.contact-map {
+    width: 100%;
+    height: 100%;
+    border: none; /* Odstraní ošklivý rámeček z iframu */
+    display: block;
+}
+
+
+@media (max-width: 991px) {
+    .map-container {
+        height: 600px;
+    }
+}
+
+/* =========================================
+   FOOTER (Patička podle Figmy)
+   ========================================= */
+.footer-section {
+    background-color:var(--background);
+    padding: 6rem 0; /* Velký prostor nahoře a dole, ať to dýchá */
+    margin-top: 5rem;
+}
+
+/* 1. Sloupec: Logo a texty */
+.footer-logo {
+    max-width: 140px;
+    opacity: 0.5;     /* Udělá logo šedé/tlumené */
+    filter: grayscale(100%);
+}
+
+.footer-text {
+    color: var(--text);
+    opacity: 80%;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-left: 0.5rem;
+}
+
+.social-link-small {
+    color: var(--primary) ;
+    font-size: 1.1rem;                /* Zvětší ikonky */
+    text-decoration: none; /* Zruší podtržení */
+    display: inline-block; 
+}
+
+.social-icons-small {
+    margin-left: 0.3rem;
+    display: flex;
+    gap: 2rem; /* Mezery mezi ikonami (Instagram, X, FB) */
+    align-items: center;
+}
+
+
+.social-link-small:hover {
+    color: var(--primary-shadow);/* Pojistka, aby to nezmodralo při hoveru */
+}
+
+.copyright-text {
+    font-size: 0.8rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Nadpisy (Otevírací doba, Kontakt) */
+.footer-title {
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: var(--fw-bold);
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+
+/* Otevírací doba */
+.footer-hours p {
+    margin-left: 0.5rem;
+    color: var(--text);
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-contact{
+    margin-left: 0.5rem;
+}
+
+/* Kontakt s malými ikonkami */
+.footer-contact .contact-item-small {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #a0a0a0;
+    font-size: 0.95rem;
+}
+
+.footer-icon {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-variation-settings: 'FILL' 0, 'wght' var(--fw-semibold); /* Udrží ikonky jako obrys (outline) */
+}

@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reborn Gym</title>
+  <!--favicon-->
+  <link rel="icon" type="image/svg+xml" href="img/RBN-favicon.svg">
+  <!--načtení fontu-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!--písmo webu-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!--material icons-->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!--bootstrap icons-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!--bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!--styleSheet-->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl fixed-top">
+      <!--logo-->
+      <div class="container d-flex align-items-center">
+        <a class="navbar-brand me-0" href="#">
+          <img src="img/RBN-logo.svg" class="nav-logo" alt="RBN-logo">
+        </a>
+        <!-----------------------nav------------------------------------->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="#uvod">ÚVOD</a></li>
+            <li class="nav-item"><a class="nav-link" href="#sluzby">SLUŽBY</a></li>
+            <li class="nav-item"><a class="nav-link" href="#o-nas">O NÁS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#galerie">GALERIE</a></li>
+            <li class="nav-item"><a class="nav-link" href="#cenik">CENÍK</a></li>
+            <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" href="#kontakt">KONTAKTY</a></li>
+          </ul>
+        </div>
+
+        <!--talcitko na mapu-->
+        <div class="d-flex justify-content-end align-items-center" style="width: 10rem">
+
+          <a href="#map" class="nav-btn-box d-none d-xl-flex">
+            kde nás najdeš
+          </a>
+          <!--Hamburger tlacitko-->
+          <button class="d-xl-none bg-transparent border-0 p-0 line-height-0" aria-label="Otevřít menu" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+            <div class="icon-wrapper">
+              <span class="material-symbols-outlined icon-menu">menu</span>
+              <span class="material-symbols-outlined icon-close">close</span>
+            </div>
+            
+          </button>
+
+        </div>
+
+
+      </div>
+    </nav>
+  </header>
+  <!--OFFcanvas(oteviraci menu)-->
+  <div class="offcanvas offcanvas-top h-100" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 px-3 gap-3">
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#uvod">ÚVOD</a></li>
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#sluzby">SLUŽBY</a></li>
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#o-nas">O NÁS</a></li>
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#galerie">GALERIE</a></li>
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#cenik">CENÍK</a></li>
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#faq">FAQ</a></li>
+        <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link fs-2" href="#kontakt">KONTAKT</a></li>
+        <!--konkatkt slacito na mapu v OFFcanvasu-->
+        <li class="nav-item mt-4" data-bs-dismiss="offcanvas">
+          <a class="mobile-map-btn" href="#map">KDE NÁS NAJDEŠ</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="d-block text-highlight">restartuj</span>
+            <span class="d-block">svůj</span>
+            <span class="d-block">potenciál</span>
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <section id="uvod" class="full-page-section">
+      <div class="container">
+
+        <div class="row align-items-start gy-5 justify-content-between">
+
+          <div class="col-lg-5 col-12">
+            <div class="text-content-box">
+              <h2 class="section-label" style="margin-top: -5px !important;">
+                zrozeno v brně
+              </h2>
+
+              <p class="sub-heading">
+                V roce <span class="text-highlight">2025</span> jsme se rozhodli, že <span
+                  class="text-highlight">Brno</span> potřebuje víc než jen další komerční prostor bez duše. Chtěli jsme
+                postavit pořádnou posilovnu v moderním provedení, kde se neřeší výmluvy, ale progres.
+              </p>
+
+              <p class="section-text">
+                V <span class="text-highlight">RBN Fitness</span> tě čeká moderní prostor, špičkové stroje a komunita, která
+                tě nenechá polevit. Je jedno, jestli začínáš, nebo jsi profík. Tohle je místo pro tvůj <span
+                  class="text-highlight">RESTART</span>.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12 d-flex justify-content-lg-end">
+            <div class="video-wrapper video-style">
+              <video src="vid/Gym-Advertisment.mp4" controls playsinline class="promo-video"></video>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="sluzby" class="full-page-section">
+      <div class="container">
+        <div>
+          <h2 class="section-label section-label-center">
+            jsme v tom s tebou
+          </h2>
+    
+          <h3 class="sub-heading sub-heading-center">
+            Nabízíme kompletní zázemí pro tvůj progres.
+          </h3>
+    
+          <div class="timeline-wrapper">
+            <div class="timeline-line"></div>
+    
+            <div class="timeline-item left">
+              <div class="timeline-icon-circle">
+                <span class="material-symbols-outlined">fitness_center</span>
+              </div>
+              <div class="timeline-branch"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">Individuální tréninky</h3>
+                <p class="timeline-text">Žádné kopírování plánů z internetu, ale trénink <span
+                    class="text-highlight">postavený
+                    přímo na tvých cílech.</span></p>
+              </div>
+            </div>
+    
+            <div class="timeline-item right">
+              <div class="timeline-icon-circle">
+                <span class="material-symbols-outlined">groups</span>
+              </div>
+              <div class="timeline-branch"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">Skupinové lekce</h3>
+                <p class="timeline-text">Intenzivní trénink v komunitě, která tě vyhecuje k výkonům, <span
+                    class="text-highlight">o kterých jsi nevěděl.</span></p>
+              </div>
+            </div>
+    
+            <div class="timeline-item left">
+              <div class="timeline-icon-circle">
+                <i class="bi bi-fork-knife"></i>
+              </div>
+              <div class="timeline-branch"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">Jídelníčky na míru</h3>
+                <p class="timeline-text">Nastavíme ti stravu tak, aby tě neomezovala, ale podporovala <span
+                    class="text-highlight">tvůj progres v gymu.</span></p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider">
+    <section id="o-nas" class="full-page-section">
+      <div class="container">
+        <div class="text-content-box">
+          <h2 class="section-label ">
+            proč reborn
+          </h2>
+
+          <h3 class="sub-heading">
+            Brno je plné komerčních fitek, my jsme postavili gym.
+          </h3>
+
+          <p class="section-text">
+            V Brně je spousta míst, kde si můžeš zacvičit, ale my jsme chtěli víc.
+            Postavili jsme <span class="text-important">moderní prostor</span>, který si na nic nehraje.
+          </p>
+
+          <p class="section-text">
+            Místo, kde nemusíš mít strach pořádně prásknout činkou o zem nebo ze sebe vydat maximum.
+          </p>
+
+          <p class="section-text">
+            <span class="text-highlight">RBN Fitness</span> je kombinace
+            <span class="text-highlight">špičkové techniky</span> a
+            <span class="text-highlight">syrové atmosféry</span>, která tě donutí se posunout.
+          </p>
+
+          <h3 class="sub-heading sub-heading-offset">
+            <span class="text-highlight">Na co se můžeš těšit</span>
+          </h3>
+
+        </div>
+
+        <div class="features-timeline-wrapper">
+          <div class="features-line"></div>
+        
+          <div class="features-container">
+        
+            <div class="features-item">
+              <div class="features-dot">
+                <span class="material-symbols-outlined">fitness_center</span>
+              </div>
+              <div class="features-branch"></div>
+              <div class="features-card">
+                <h4 class="features-title">Top stroje</h4>
+                <p class="features-text">Nešetřili jsme. Najdeš u nás světovou špičku jako <span class="text-highlight">Hammer
+                    Strength</span> nebo <span class="text-highlight">Prime</span> pro tvůj nejlepší trénink.</p>
+              </div>
+            </div>
+        
+            <div class="features-item">
+              <div class="features-dot">
+                <span class="material-symbols-outlined">volume_off</span>
+              </div>
+              <div class="features-branch"></div>
+              <div class="features-card">
+                <h4 class="features-title">Žádný strach z hluku</h4>
+                <p class="features-text">Prostor je <span class="text-highlight">skvěle odhlučněný</span>. Nevadí nám, že s
+                  činkou házíš – u nás se to naopak čeká.</p>
+              </div>
+            </div>
+        
+            <div class="features-item">
+              <div class="features-dot">
+                <span class="material-symbols-outlined">home</span>
+              </div>
+              <div class="features-branch"></div>
+              <div class="features-card">
+                <h4 class="features-title">Jedinečné zázemí</h4>
+                <p class="features-text"><span class="text-highlight">Powerlifterská zóna</span>, kalibrované kotouče, deadlift
+                  platforma a dřepovací klece. Tady se hranice nehledají, ale posouvají.</p>
+              </div>
+            </div>
+        
+            <div class="features-item">
+              <div class="features-dot">
+                <span class="material-symbols-outlined">sports_gymnastics</span>
+              </div>
+              <div class="features-branch"></div>
+              <div class="features-card">
+                <h4 class="features-title">Kardio a Funkční zóna</h4>
+                <p class="features-text">Vyhrazený prostor pro tvůj <span class="text-highlight">warm-up</span> i <span
+                    class="text-highlight">nejmodernější stroje</span>, na kterých posuneš svoji kondici.</p>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="galerie" class="full-page-section">
+      <div class="container">
+        <div>
+          <h2 class="section-label section-label-center">
+            jak to u nás vypadá
+          </h2>
+          <h3 class="sub-heading sub-heading-center">
+            Prohlédni si špičkové zázemí RBN Fitness, kde se nehledají výmluvy, ale výsledky.
+          </h3>
+        </div>
+        <!--kontejner pro galerii-->
+        <div class="row g-3 mt-4">
+          <div class="col-lg-8">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <div class="gallery-img img-1" style="cursor: pointer;" data-bs-toggle="modal"
+                  data-bs-target="#gallery-modal" onclick="goToSlide(0)"><img src="img/gallery-pictures/1.webp"
+                    alt="..."></div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="gallery-img img-2" style="cursor: pointer;" data-bs-toggle="modal"
+                  data-bs-target="#gallery-modal" onclick="goToSlide(1)"><img src="img/gallery-pictures/2.webp"
+                    alt="..."></div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="gallery-img img-4" style="cursor: pointer;" data-bs-toggle="modal"
+                  data-bs-target="#gallery-modal" onclick="goToSlide(2)"><img src="img/gallery-pictures/4.webp"
+                    alt="..."></div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="gallery-img img-5" style="cursor: pointer;" data-bs-toggle="modal"
+                  data-bs-target="#gallery-modal" onclick="goToSlide(3)"><img src="img/gallery-pictures/5.webp"
+                    alt="..."></div>
+              </div>
+            </div>
+          </div>
+          <!--velky obrazek vpravo-->
+          <div class="col-lg-4">
+            <div class="gallery-img img-3" style="cursor: pointer;" data-bs-toggle="modal"
+              data-bs-target="#gallery-modal" onclick="goToSlide(4)">
+              <img src="img/gallery-pictures/3.webp" alt="...">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="cenik" class="full-page-section">
+      <div class="container">
+        <div class="text-content-box">
+          <h2 class="section-label">
+            investice do sebe
+          </h2>
+          <h3 class="sub-heading">
+            Vyber si jeden z našich tarifů. <span class="text-important">Studenti</span> a u nás mají slevu na všechny
+            vstupy i členství.
+          </h3>
+        </div>
+
+        <div class="row g-4 mt-4 justify-content-center">
+          <!--KARTA 1-->
+          <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+            <div class="pricing-card">
+              <div class="card-label">
+                <h3 class="title"> 1 vstup</h3>
+                <div class="price">150 kč</div>
+                <div class="sale-price">student 130 kč</div>
+              </div>
+
+              <ul class="membership-details">
+                <!--Výhody-->
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Vstup do celého gymu</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Časově neomezený trénink</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Voda k tréninku v ceně</span>
+                </li>
+                <!--neVýhody-->
+                <li class="disadvantage">
+                  <span class="material-symbols-outlined cross">close</span>
+                  <span class="disAdvntg-text">Čistý ručník k zapůjčení</span>
+                </li>
+
+                <li class="disadvantage">
+                  <span class="material-symbols-outlined cross">close</span>
+                  <span class="disAdvntg-text">1x měření na InBody v ceně</span>
+                </li>
+              </ul>
+
+              <a href="#kontakt" class="card-btn">začni svůj restart</a>
+
+            </div>
+          </div>
+          <!--KARTA 2-->
+          <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+            <div class="pricing-card">
+              <div class="card-label">
+                <h3 class="title">1 měsíc</h3>
+                <div class="price">1200 kč</div>
+                <div class="sale-price">student 990 kč</div>
+              </div>
+
+              <ul class="membership-details">
+                <!--Výhody-->
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Vstup do celého gymu</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Časově neomezený trénink</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Voda k tréninku v ceně</span>
+                </li>
+                <!--neVýhody-->
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Čistý ručník k zapůjčení</span>
+                </li>
+
+                <li class="disadvantage">
+                  <span class="material-symbols-outlined cross">close</span>
+                  <span class="disAdvntg-text">1x měření na InBody v ceně</span>
+                </li>
+              </ul>
+
+              <a href="#kontakt" class="card-btn">začni svůj restart</a>
+
+            </div>
+          </div>
+          <!--KARTA 3-->
+          <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+            <div class="pricing-card">
+              <div class="card-label">
+                <h3 class="title">3 měsíce</h3>
+                <div class="price">2900 kč</div>
+                <div class="sale-price">student 2690 kč</div>
+              </div>
+
+              <ul class="membership-details">
+                <!--Výhody-->
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Vstup do celého gymu</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Časově neomezený trénink</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Voda k tréninku v ceně</span>
+                </li>
+                <!--neVýhody-->
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>Čistý ručník k zapůjčení</span>
+                </li>
+
+                <li class="advantage">
+                  <span class="material-symbols-outlined check">check</span>
+                  <span>1x měření na InBody v ceně</span>
+                </li>
+              </ul>
+
+              <a href="#kontakt" class="card-btn">začni svůj restart</a>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="faq" class="full-page-section">
+      <div class="container">
+        <div>
+          <h2 class="section-label section-label-center">
+            časté dotazy
+          </h2>
+          <h3 class="sub-heading sub-heading-center">
+            Nenašli jste, co jste hledali? Zde jsou odpovědi na vaše nejčastější otázky.
+          </h3>
+        </div>
+
+
+
+        <!--Accordion-->
+        <div class="row mt-4">
+          <div class="col-lg-12 mt-4">
+
+            <div class="accordion custom-accordion" id="faqAccordion">
+
+              <div class="accordion-item">
+
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Berete Multisport karty?
+                  </button>
+                </h2>
+
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                  data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Ano! Naše brány jsou otevřené pro držitele karet MultiSport (stříbrná i Benefit). Stačí kartu
+                    pípnout na
+                    recepci a můžeš jít rovnou na věc. Karta platí na jednorázový vstup do posilovny bez doplatku.
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="accordion-item">
+
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Musím se uvazovat smlouvou na rok, nebo máte i jednorázové vstupy?
+                  </button>
+                </h2>
+
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Na nesmyslné smlouvy a skryté poplatky si u nás nehrajeme. Pokud si chceš gym jen osahat, můžeš přijít na jednorázový
+                    vstup. Pro ty, co to s tréninkem myslí vážně, máme měsíční, čtvrtletní nebo roční permanentky za zvýhodněnou cenu.
+                    Záleží jen na tobě a tvých cílech.
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="accordion-item">
+
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Je k dispozici parkování?
+                  </button>
+                </h2>
+
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                  data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Ano, hned před budovou máme vlastní parkoviště, které je pro naše návštěvníky po dobu tréninku zcela
+                    zdarma.
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="accordion-item">
+
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Co si mám vzít s sebou na první trénink?
+                  </button>
+                </h2>
+
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                  data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Žádná věda. Budeš potřebovat čistou, pevnou sportovní obuv (dovnitř tě v botech z venku nepustíme), pohodlné oblečení,
+                    láhev na vodu a hlavně ručník, který si budeš podkládat na lavičky a stroje. Pokud jedeš těžké váhy, magnézium máme
+                    erární, takže to nosit nemusíš.
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="kontakt" class="full-page-section">
+      <div class="container">
+        <div class="text-content-box">
+          <h2 class="section-label">
+            kde nás najdeš
+          </h2>
+          <p class="sub-heading">
+            Máš dotaz k členství nebo chceš domluvit trénink s trenérem? Napiš nám, zavolej, nebo se prostě ukaž na
+            recepci.
+          </p>
+        </div>
+
+        <div class="row g-5 mt-4 align-items-center">
+
+          <div class="col-lg-4 col-12">
+            <div class="contact-info-list">
+
+              <div class="contact-item">
+                <span class="material-symbols-outlined contact-icon">location_on</span>
+                <div class="contact-text">
+                  <span class="contact-title">Adresa</span>
+                  <span class="contact-detail">Vlhká 169/13, 602 00 Brno</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <span class="material-symbols-outlined contact-icon">call</span>
+                <div class="contact-text">
+                  <span class="contact-title">Telefon</span>
+                  <span class="contact-detail">+420 777 888 999</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <span class="material-symbols-outlined contact-icon">mail</span>
+                <div class="contact-text">
+                  <span class="contact-title">Email</span>
+                  <span class="contact-detail">info@reborngym.cz</span>
+                </div>
+              </div>
+
+              <div class="social-icons mt-4">
+
+                <a href="#" class="social-link" aria-label="Instagram">
+                  <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#" class="social-link" aria-label="X">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+
+                <a href="#" class="social-link" aria-label="Facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="col-lg-8 col-12">
+            <div class="map-container" id="map">
+              <iframe class="contact-map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d651.8293319608063!2d16.617909362600148!3d49.19453950350876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471294f7f5c5af6d%3A0x7779cd1d023d04fb!2zVmxoa8OhIDE2OS8xMywgNjAyIDAwIEJybm8tc3TFmWVkLVrDoWJyZG92aWNl!5e0!3m2!1scs!2scz!4v1771597067898!5m2!1scs!2scz"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+    </section>
+
+  </main>
+
+  <!--FOOTER-->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="row gy-5">
+
+        <div class="col-lg-4 col-12">
+          <img src="img/RBN-logo.svg" class="footer-logo mb-3" alt="RBN Gym Logo">
+
+          <p class="footer-text mb-4">
+            Restartuj svůj<br>potenciál
+          </p>
+
+          <div class="social-icons-small mb-4">
+            <a href="#" class="social-link-small" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link-small" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-link-small" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+
+          <div class="copyright-text">
+            <i class="bi bi-c-circle"></i> 2026 REBORN GYM. Všechna práva vyhrazena.
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-12 d-flex justify-content-lg-center">
+          <div>
+            <h4 class="footer-title">otevírací doba</h4>
+            <div class="footer-hours">
+              <p>PO - PÁ: <span class="text-highlight">6 - 22</span></p>
+              <p>SO - NE: <span class="text-highlight">8 - 20</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-12 d-flex justify-content-lg-end">
+          <div>
+            <h4 class="footer-title">kontakt</h4>
+            <div class="footer-contact">
+
+              <div class="contact-item-small mb-3">
+                <span class="material-symbols-outlined footer-icon">location_on</span>
+                <span>Vlhká 169/13, 602 00 Brno</span>
+              </div>
+
+              <div class="contact-item-small mb-3">
+                <span class="material-symbols-outlined footer-icon">call</span>
+                <span>+420 777 888 999</span>
+              </div>
+
+              <div class="contact-item-small">
+                <span class="material-symbols-outlined footer-icon">mail</span>
+                <span>info@reborngym.cz</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!--MODAL/CAROUSEL SLIDE-->
+  <div class="modal fade" id="gallery-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content border-0">
+        <div class="modal-body p-0 position-relative">
+
+          <button type="button" class="bg-transparent border-0 position-absolute" data-bs-dismiss="modal"
+            aria-label="Zavřít">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+
+          <div id="carouselGallery" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                <img src="img/gallery-pictures/1.webp" class="d-block  rounded-3" alt="Gym wide">
+              </div>
+
+              <div class="carousel-item">
+                <img src="img/gallery-pictures/2.webp" class="d-block rounded-3" alt="Detail">
+              </div>
+
+              <div class="carousel-item">
+                <img src="img/gallery-pictures/4.webp" class="d-block rounded-3" alt="Pull ups">
+              </div>
+
+              <div class="carousel-item">
+                <img src="img/gallery-pictures/5.webp" class="d-block  rounded-3" alt="Dumbbells">
+              </div>
+
+              <div class="carousel-item">
+                <img src="img/gallery-pictures/3.webp" class="d-block  rounded-3" alt="Sled push">
+              </div>
+
+            </div>
+
+            <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#carouselGallery"
+              data-bs-slide="prev">
+              <span class="material-symbols-outlined">arrow_back_ios</span>
+              <span class="visually-hidden">Předchozí</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselGallery" data-bs-slide="next">
+              <span class="material-symbols-outlined">arrow_forward_ios</span>
+              <span class="visually-hidden">Další</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--MODAL/CAROUSEL SLIDE-->
+
+
+  <!--BootStrap JS-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const offcanvasElement = document.getElementById('offcanvasNavbar');
+      const togglerBtn = document.querySelector('button[data-bs-target="#offcanvasNavbar"]');
+
+      if (offcanvasElement && togglerBtn) {
+
+        //co sa stane pri kliknuti
+        offcanvasElement.addEventListener('show.bs.offcanvas', function () {
+          //animáciu odkazu
+          offcanvasElement.classList.add('menu-opening');
+
+          // přidání třídy na tlačítko (spustí CSS animaci ikonky)
+          togglerBtn.classList.add('is-active');
+        });
+
+        // co se stane pri zavirani
+        offcanvasElement.addEventListener('hide.bs.offcanvas', function () {
+          // skryti odkazu
+          offcanvasElement.classList.remove('menu-opening');
+
+          //odebrani tridy
+          togglerBtn.classList.remove('is-active');
+        });
+      }
+    });
+  </script>
+
+  <!--script pro carousel-->
+  <script>
+    function goToSlide(index) {
+      const carouselEl = document.querySelector('#carouselGallery');
+      const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
+      carousel.to(index);
+    }
+  </script>
+</body>
+
+</html>
