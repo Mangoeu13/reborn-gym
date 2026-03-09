@@ -25,7 +25,7 @@
     /* Hlavní nadpisy a labely */
 
     /* clamp(minimální velikost, preferovaná, maximální velikost) */
-    --fs-hero: clamp(2.5rem,calc(8vw + 1rem), 6rem);
+    --fs-hero: clamp(3rem,calc(8vw + 1rem), 6rem);
     --fs-label: 4rem;       /* 64px / 16 = 4rem */
     --fs-card-label: 2.5rem; /* 40px / 16 = 2.5rem */
     --fs-card-text: 1.125rem;
@@ -281,7 +281,7 @@ button.is-active .icon-close {
     }
 
     .hero-title {
-        --fs-hero: clamp(1.8rem, 15vw, 3rem);
+        --fs-hero: clamp(2.2rem, 18vw, 4rem);
         line-height: 1.1;
     }
     
@@ -1587,4 +1587,23 @@ button.is-active .icon-close {
     html, body {
         overflow-x: hidden;
     }
+}
+
+/* --- DEFINITIVNÍ SMRT PRO MODRÉ KOLEČKO PŘI DOTEKU NA MOBILU --- */
+button, 
+.navbar-toggler, 
+.icon-wrapper, 
+.material-symbols-outlined {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important; /* Zabrání i nechtěnému označení ikony jako textu */
+}
+
+/* Pojistka, aby to neudělalo stín ani při aktivním kliku */
+button:active, 
+.navbar-toggler:active {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
