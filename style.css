@@ -123,8 +123,11 @@ nav.navbar {
 }
 
 #offcanvasNavbar.offcanvas-top {
-    top: 6rem; 
     height: calc(100vh - var(--header-height));
+}
+
+.offcanvas-body {
+    margin-top: 7rem;
 }
 
 /* Wrapper nemá žádné centrování, drží jen relative pozici pro křížek */
@@ -165,11 +168,14 @@ button.is-active .icon-close {
     color: var(--primary);
 }
 
-/* :not(.is-active) zaručí, že se to aplikuje JEN na zavřené menu (hamburger) */
-button:not(.is-active):hover .icon-menu,
-button:not(.is-active):focus-visible .icon-menu {
-    color: var(--primary);
+
+@media (hover: hover) {
+    /* :not(.is-active) zaručí, že se to aplikuje JEN na zavřené menu (hamburger) */
+    button:not(.is-active):hover .icon-menu {
+        color: var(--primary);
+    }
 }
+
 
 /* Pojistka pro plynulou změnu barvy při najetí */
 .icon-menu {
@@ -192,17 +198,20 @@ button:not(.is-active):focus-visible .icon-menu {
     transition: all 0.3s ease;
 }
 
-/* efekt pri najeti nebo tuknuti pc/mb */
-.mobile-map-btn:hover,
-.mobile-map-btn:focus {
-    background-color: var(--text);
-    color: var(--map-btn);
+@media (hover: hover) {
+    /* efekt pri najeti nebo tuknuti pc/mb */
+    .mobile-map-btn:hover {
+        background-color: var(--text);
+        color: var(--map-btn);
+    }
 }
 
-.nav-link:hover{
-    transition: all 0.3s ease;
-    cursor: pointer;
-    color: var(--primary);
+@media (hover: hover) {
+    .nav-link:hover {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        color: var(--primary);
+    }
 }
 
 
@@ -285,10 +294,12 @@ button:not(.is-active):focus-visible .icon-menu {
     cursor: pointer; /* Aby se ukázala ručička */
 }
 
-.navbar .material-symbols-outlined:hover,
-.navbar .material-symbols-outlined:focus {
-    color: var(--primary);
+@media (hover: hover) {
+    .navbar .material-symbols-outlined:hover {
+        color: var(--primary);
+    }
 }
+
 
 .offcanvas-header .material-symbols-outlined{
     color: var(--nav-items);
@@ -310,17 +321,20 @@ button:not(.is-active):focus-visible .icon-menu {
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Jemný stín */
 }
 
-/* Otočení tlačítka */
-.offcanvas-header button:hover,
-.offcanvas-header button:focus {
-    transform: rotate(90deg); 
+@media (hover: hover) {
+    /* Otočení tlačítka */
+    .offcanvas-header button:hover {
+        transform: rotate(90deg);
+    }
 }
 
-/* Přebarvení ikony na lososovou */
-.offcanvas-header button:hover span,
-.offcanvas-header button:focus span {
-    color: var(--primary);
+@media (hover: hover) {
+    /* Přebarvení ikony na lososovou */
+    .offcanvas-header button:hover span {
+        color: var(--primary);
+    }
 }
+
 
 
 .nav-btn-box {
@@ -342,12 +356,13 @@ button:not(.is-active):focus-visible .icon-menu {
 }
 
 
-
-.nav-btn-box:hover,
-.nav-btn-box:focus {
-    background-color: var(--text);
-    color: var(--map-btn);
+@media (hover: hover) {
+    .nav-btn-box:hover {
+        background-color: var(--text);
+        color: var(--map-btn);
+    }
 }
+
 
 
 .hero-section {
@@ -632,24 +647,29 @@ button:not(.is-active):focus-visible .icon-menu {
     }
 }
 
-/* Vyplnění kolečka a přidání jemné záře (barva odvozena z tvého borderu) */
-.timeline-item:hover .timeline-icon-circle {
-    background-color: var(--primary);
-    box-shadow: 0 0 15px rgba(255, 134, 121, 0.6); 
+@media (hover: hover) {
+
+    /* Vyplnění kolečka a přidání jemné záře (barva odvozena z tvého borderu) */
+    .timeline-item:hover .timeline-icon-circle {
+        background-color: var(--primary);
+        box-shadow: 0 0 15px rgba(255, 134, 121, 0.6);
+    }
+
+    /* Změna barvy ikony, aby byla na vyplněném kolečku vidět */
+    .timeline-item:hover .timeline-icon-circle .material-symbols-outlined,
+    .timeline-item:hover .timeline-icon-circle .bi {
+        color: var(--background);
+    }
+
+    /* Transformace boxu vpravo/vlevo (jemný posun nahoru + stín + zvýraznění okraje) */
+    .timeline-item:hover .timeline-content {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-color: var(--primary);
+    }
 }
 
-/* Změna barvy ikony, aby byla na vyplněném kolečku vidět */
-.timeline-item:hover .timeline-icon-circle .material-symbols-outlined,
-.timeline-item:hover .timeline-icon-circle .bi {
-    color: var(--background);
-}
 
-/* Transformace boxu vpravo/vlevo (jemný posun nahoru + stín + zvýraznění okraje) */
-.timeline-item:hover .timeline-content {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-color: var(--primary);
-}
 
 
 /*------pro obe osy*/
@@ -769,24 +789,29 @@ button:not(.is-active):focus-visible .icon-menu {
     color: var(--text);
 }
 
-/* Vyplnění tečky a záře */
-.features-item:hover .features-dot {
-    background-color: var(--primary);
-    box-shadow: 0 0 15px rgba(255, 134, 121, 0.6);
+@media (hover: hover) {
+
+    /* Vyplnění tečky a záře */
+    .features-item:hover .features-dot {
+        background-color: var(--primary);
+        box-shadow: 0 0 15px rgba(255, 134, 121, 0.6);
+    }
+
+    /* Změna barvy ikony */
+    .features-item:hover .features-dot .material-symbols-outlined,
+    .features-item:hover .features-dot .bi {
+        color: var(--background);
+    }
+
+    /* Transformace karty (jemný posun nahoru + stín + zvýraznění okraje) */
+    .features-item:hover .features-card {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-color: var(--primary);
+    }
+
 }
 
-/* Změna barvy ikony */
-.features-item:hover .features-dot .material-symbols-outlined,
-.features-item:hover .features-dot .bi {
-    color: var(--background);
-}
-
-/* Transformace karty (jemný posun nahoru + stín + zvýraznění okraje) */
-.features-item:hover .features-card {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-color: var(--primary);
-}
 
 /* Responzivita pro mobil a tablet (Přebuduje to na vertikální osu) */
 @media screen and (max-width: 991px) {
@@ -875,11 +900,14 @@ button:not(.is-active):focus-visible .icon-menu {
     display: block;      /* Pojistka, aby pod ním nebyla mezera */
 }
 
+@media (hover: hover) {
 
-/* Efekt při najetí (volitelné) */
-.gallery-img:hover img {
-    transform: scale(1.05);
+    /* Efekt při najetí (volitelné) */
+    .gallery-img:hover img {
+        transform: scale(1.05);
+    }
 }
+
 
 /* 1. MOBILNÍ ZÁKLAD (0px - 767px) */
 /* Sem to, co platí, když je všechno pod sebou v jednom sloupci */
@@ -1034,12 +1062,17 @@ button:not(.is-active):focus-visible .icon-menu {
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
 }
 
-/* Efekt při najetí (Hover) - Lososová */
-#carouselGallery .carousel-control-prev:hover span, 
-#carouselGallery .carousel-control-next:hover span {
-    color: var(--primary); 
-    transform: scale(1.1); /* Lehké zvětšení */
+@media (hover: hover) {
+
+    /* Efekt při najetí (Hover) - Lososová */
+    #carouselGallery .carousel-control-prev:hover span,
+    #carouselGallery .carousel-control-next:hover span {
+        color: var(--primary);
+        transform: scale(1.1);
+        /* Lehké zvětšení */
+    }
 }
+
 
 /* 5. TLAČÍTKO ZAVŘÍT (Křížek) */
 /* Cílíme na ten button v modal-body */
@@ -1059,14 +1092,22 @@ button:not(.is-active):focus-visible .icon-menu {
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-/* Efekt při najetí na křížek */
-#gallery-modal .modal-body > button:hover span {
-    color: var(--primary); /* Lososová */
+@media (hover: hover) {
+
+    /* Efekt při najetí na křížek */
+    #gallery-modal .modal-body>button:hover span {
+        color: var(--primary);
+        /* Lososová */
+    }
+
+    #gallery-modal .modal-body>button:hover {
+        transform: rotate(90deg);
+        /* Efektní otočení */
+    }
+
 }
 
-#gallery-modal .modal-body > button:hover {
-    transform: rotate(90deg); /* Efektní otočení */
-}
+
 
 /* Úprava pro mobily (aby obrázky nebyly moc malé a šipky byly uvnitř) */
 @media (max-width: 768px) {
@@ -1114,11 +1155,14 @@ button:not(.is-active):focus-visible .icon-menu {
     transition: transform 0.6s ease;  /* Animace při pohybu */
 }
 
-/* Efekt při najetí myší - karta se lehce zvedne */
-.pricing-card:hover,
-.pricing-card:focus {
-    transform: scale(1.01) translateY(-2px);
+@media (hover: hover) {
+
+    /* Efekt při najetí myší - karta se lehce zvedne */
+    .pricing-card:hover {
+        transform: scale(1.01) translateY(-2px);
+    }
 }
+
 
 /* 2. HLAVIČKA (Název a Cena) */
 .card-label {
@@ -1210,13 +1254,17 @@ button:not(.is-active):focus-visible .icon-menu {
     align-items: center;
 }
 
-/* Efekt při najetí */
-.card-btn:hover,
-.card-btn:focus {
-    background-color: var(--text); /* Zesvětlá/Zešedne */
-    color: var(--map-btn);
-    transform: scale(1.01); /* Lehce se nafoukne */
+@media (hover: hover) {
+    /* Efekt při najetí */
+    .card-btn:hover {
+        background-color: var(--text);
+        /* Zesvětlá/Zešedne */
+        color: var(--map-btn);
+        transform: scale(1.01);
+        /* Lehce se nafoukne */
+    }
 }
+
 
 /* =========================================
    RESPONZIVITA CENÍKU (Media Queries)
@@ -1396,11 +1444,15 @@ button:not(.is-active):focus-visible .icon-menu {
     display: inline-block; 
 }
 
-/* Efekt při najetí - jen posun nahoru, barva zůstane lososová */
-.social-link:hover {
-    /*transform: translateY(-5px) scale(1.1);*/
-    color: var(--primary-shadow);/* Pojistka, aby to nezmodralo při hoveru */
+@media (hover: hover) {
+
+    /* Efekt při najetí - jen posun nahoru, barva zůstane lososová */
+    .social-link:hover {
+        color: var(--primary-shadow);
+        /* Pojistka, aby to nezmodralo při hoveru */
+    }
 }
+
 
 /* =========================================
    MAPA (Interaktivní Iframe)
@@ -1469,10 +1521,13 @@ button:not(.is-active):focus-visible .icon-menu {
     align-items: center;
 }
 
-
-.social-link-small:hover {
-    color: var(--primary-shadow);/* Pojistka, aby to nezmodralo při hoveru */
+@media (hover: hover) {
+    .social-link-small:hover {
+        color: var(--primary-shadow);
+        /* Pojistka, aby to nezmodralo při hoveru */
+    }
 }
+
 
 .copyright-text {
     font-size: 0.8rem;
@@ -1517,4 +1572,19 @@ button:not(.is-active):focus-visible .icon-menu {
     color: var(--primary);
     font-size: 1.5rem;
     font-variation-settings: 'FILL' 0, 'wght' var(--fw-semibold); /* Udrží ikonky jako obrys (outline) */
+}
+
+/* --- MOBILNÍ OPRAVY (Aplikuje se jen pod 1200px) --- */
+@media (max-width: 1199px) {
+    /* Zabrání uskakování stránky */
+    body, 
+    .fixed-top, 
+    .sticky-top, 
+    .navbar {
+        padding-right: 0 !important;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
 }
