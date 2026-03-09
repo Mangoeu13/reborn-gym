@@ -1426,6 +1426,11 @@ button.is-active .icon-close {
     font-size: var(--fs-body);
 }
 
+/* --- ZABIJÁK MODRÉHO ČÍSLA PRO SAFARI --- */
+.contact-text a.contact-detail {
+    color: var(--text) !important;
+}
+
 /* =========================================
    SOCIÁLNÍ SÍTĚ (Zabití modrého Bootstrapu)
    ========================================= */
