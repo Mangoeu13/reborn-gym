@@ -25,7 +25,7 @@
     /* Hlavní nadpisy a labely */
 
     /* clamp(minimální velikost, preferovaná, maximální velikost) */
-    --fs-hero: clamp(3rem,calc(8vw + 1rem), 6rem);
+    --fs-hero: clamp(3rem, calc(8vw + 1rem), 6rem);
     --fs-label: 4rem;       /* 64px / 16 = 4rem */
     --fs-card-label: 2.5rem; /* 40px / 16 = 2.5rem */
     --fs-card-text: 1.125rem;
@@ -70,8 +70,14 @@ body {
 }
 
 @media (max-width: 768px) {
-    .section-label:first-child {
-        margin-top: 2rem; /* Na mobilu se mezera zmenší na polovinu */
+    .section-label{
+        font-size: calc(var(--fs-label) - 1rem);
+    }
+}
+
+@media (max-width: 534px) {
+    .section-label{
+        font-size: calc(var(--fs-label) - 1.5rem);
     }
 }
 
@@ -128,6 +134,18 @@ nav.navbar {
 
 .offcanvas-body {
     margin-top: 7rem;
+}
+
+/* --- LINKY POD POLOŽKAMI V MENU --- */
+.offcanvas-body .nav-item:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%; /* Délka linky */
+    opacity: 0.4;
+    margin-top: 1rem; /* Mezera mezi textem a linkou */
+    
+    background: linear-gradient(to right, var(--primary), transparent);
 }
 
 /* Wrapper nemá žádné centrování, drží jen relative pozici pro křížek */
@@ -234,6 +252,7 @@ button.is-active .icon-close {
     padding-bottom: 4rem;
 }
 
+
 #uvod {
     scroll-margin-top: var(--header-height);
 }
@@ -278,11 +297,6 @@ button.is-active .icon-close {
         padding-left: 1.5rem;
         padding-right: 1,5rem;
 
-    }
-
-    .hero-title {
-        --fs-hero: clamp(2.2rem, 18vw, 4rem);
-        line-height: 1.1;
     }
     
 
@@ -368,25 +382,35 @@ button.is-active .icon-close {
 .hero-section {
     margin-top: var(--header-height);
     display: flex;
-    align-items: center;      /* Vertikální centr */
-    height: 50dvh; /*velikost pro mobily*/
+    align-items: center;
+    /* Vertikální centr */
+    height: 50dvh;
+    /*velikost pro mobily*/
     width: 100%;
 
-    background: 
-        /* 1. Ztmavení SHORA a ZDOLA (pro splynutí s webem) */
-        linear-gradient(to bottom, 
-            rgb(0, 0, 0) 0%, 
-            rgba(0, 0, 0, 0.3) 40%, 
-            rgba(0, 0, 0, 0.3) 60%, 
-            rgb(0, 0, 0) 100%),
-        /* 2. Ztmavení ZLEVA a ZPRAVA (pro hloubku a čitelnost) */
-        linear-gradient(to right, 
-            rgb(0, 0, 0) 0%, 
-            rgba(0, 0, 0, 0) 50%, 
-            rgb(0, 0, 0) 100%),
+    /* Zesvětlené pozadí pro lepší vizuální shodu s Figmou */
+    background:
+        /* 1. Ztmavení SHORA a ZDOLA (zlatá střední cesta) */
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9) 0%,
+            /* Skoro černá nahoře (90 %) */
+            rgba(0, 0, 0, 0.2) 40%,
+            /* Lehký závoj směrem ke středu (20 %) */
+            rgba(0, 0, 0, 0.2) 60%,
+            rgba(0, 0, 0, 0.9) 100%),
+        /* Skoro černá dole (90 %) */
+
+        /* 2. Ztmavení ZLEVA a ZPRAVA (pro hloubku) */
+        linear-gradient(to right,
+            rgba(0, 0, 0, 0.8) 0%,
+            /* Hodně tmavé kraje (80 %) */
+            rgba(0, 0, 0, 0) 50%,
+            /* Zcela čistý střed */
+            rgba(0, 0, 0, 0.8) 100%),
+        /* Hodně tmavé kraje (80 %) */
         /* 3. Samotný obrázek */
         url("img/Hero-picture.webp") no-repeat center center;
-    
+
 
     background-size: cover;
     overflow: hidden;
@@ -415,7 +439,37 @@ button.is-active .icon-close {
     transform-origin: left;   /* Zajistí, že se text natahuje zleva a zůstane lícovat s logem */
     
     /* --- POJISTKA --- */
-    -webkit-font-smoothing: antialiased; /* Aby to po tom natažení nebylo rozmazané */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- ANIMACE ROTUJÍCÍHO TEXTU --- */
+
+.text-rotator {
+    display: block; 
+    height: 2.4em; /*2x line-height (1.2 * 2) */
+    overflow: hidden;
+}
+
+.rotator-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* Efekt pružiny při přeskočení slova */
+    animation: rotateWords 9s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; 
+}
+
+.rotator-item {
+    height: 2.4em; /* Musí odpovídat výšce okna nahoře */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Klíčové snímky pro posun o 2.4em (výšku jedné celé fráze) nahoru */
+@keyframes rotateWords {
+    0%, 25%   { transform: translateY(0); }       /* 1*/
+    33%, 58%  { transform: translateY(-2.4em); }  /* 2 */
+    66%, 91%  { transform: translateY(-4.8em); }  /* 3*/
+    100%      { transform: translateY(0); }       /* 1*/
 }
 
 .material-symbols-outlined {
@@ -500,7 +554,7 @@ button.is-active .icon-close {
     opacity: 0.4;
     margin: 2rem auto;
     /* Vycentruje linku */
-    width: 80%;
+    width: 100%;
 }
 
 
@@ -1612,4 +1666,59 @@ button[aria-label="otevřít menu"] {
 /* pojistak pro ikonku ve vnitr*/
 button[data-bs-toggle="offcanvas"] * {
     -webkit-tap-highlight-color: transparent !important;
+}
+
+/* --- BĚŽÍCÍ PÁS --- */
+
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--primary);
+    padding: 12px 0;
+}
+
+.ticker-track {
+    display: flex;
+    width: max-content;
+    animation: scrollTicker 30s linear infinite; /* Zpomaleno na 30s, aby se to dalo lépe číst */
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* TOTO DĚLÁ TY VELKÉ MEZERY MEZI SLOVY */
+    padding-right: 3rem; /* Musí být stejné jako gap, ať to na sebe plynule navazuje */
+    flex-shrink: 0;
+    
+    
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: -1px;
+    
+    /* Vynutíme stejný font jako máš u nadpisu (pokud by se nenačetl) */
+    font-family: inherit; 
+    transform: scaleY(1.05);
+}
+
+/* Barvy textů */
+.ticker-item .txt-white {
+    color: #ffffff;
+}
+
+.ticker-item .txt-black {
+    color: #111111;
+}
+
+/* Agresivnější oddělovač (křížek) */
+.ticker-item .separator {
+    color: #ffffff;
+    font-size: 2.2rem; /* Menší než text, aby to nepřebíjelo slova */
+}
+
+@keyframes scrollTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
