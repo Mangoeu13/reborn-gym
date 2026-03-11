@@ -1668,7 +1668,7 @@ button.is-active .icon-close {
 
 .offcanvas-body .nav-link:active,
 .btn:active {
-    color: var(--primary);
+    color: var(--primary) !important;
     /* Barva při zmáčknutí */
     transform: scale(0.95);
     /* Tlačítko se lehce "zamáčkne" dovnitř */
