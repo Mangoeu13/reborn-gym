@@ -136,6 +136,20 @@ nav.navbar {
     margin-top: 7rem;
 }
 
+/* --- ZMENŠENÍ POLOŽEK V MENU NA MOBILU --- */
+@media (max-width: 768px) {
+    
+    .offcanvas-body .nav-link.fs-2 {
+        font-size: 1.3rem !important;
+    }
+
+    .offcanvas-body .nav-item::after {
+        margin-top: 4px !important;
+    }
+}
+
+
+
 /* --- LINKY POD POLOŽKAMI V MENU --- */
 .offcanvas-body .nav-item:not(:last-child)::after {
     content: "";
@@ -1748,4 +1762,21 @@ button[data-bs-toggle="offcanvas"] * {
 @keyframes scrollTicker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+/* --- BĚŽÍCÍ PÁS PRO MOBILY A TABLETY (Zmenšeno o 30 %) --- */
+@media (max-width: 768px) {
+    .ticker-wrap {
+        padding: 8px 0; /* Původně 12px */
+    }
+
+    .ticker-item {
+        font-size: 2.2rem; /* Původně 3.2rem */
+        gap: 2rem; /* Původně 3rem */
+        padding-right: 2rem; /* Původně 3rem (musí být stejné jako gap) */
+    }
+
+    .ticker-item .separator {
+        font-size: 1.5rem; /* Původně 2.2rem */
+    }
 }
