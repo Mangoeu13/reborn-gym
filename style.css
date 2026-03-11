@@ -1127,6 +1127,13 @@ button.is-active .icon-close {
     }
 }
 
+#carouselGallery .carousel-control-prev:active span, 
+#carouselGallery .carousel-control-next:active span {
+    color: var(--primary); /* Šipka problikne do lososové */
+    transform: scale(0.85); /* Zamáčkne se hezky dovnitř (menší než 1) */
+    transition: all 0.1s ease; /* Musí to být bleskové, aby to prst stihl zaregistrovat */
+}
+
 
 /* 5. TLAČÍTKO ZAVŘÍT (Křížek) */
 /* Cílíme na ten button v modal-body */
@@ -1144,6 +1151,17 @@ button.is-active .icon-close {
     color: white;        /* ZÁKLAD: Bílá */
     transition: color 0.3s ease;
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+
+/* --- EFEKT PŘI DOTYKU --- */
+#gallery-modal .modal-body>button:active {
+    /* Přidáme k rotaci (aby se na PC nekousla) i zmenšení */
+    transform: rotate(90deg) scale(0.80) !important; 
+    transition: all 0.1s ease; /* Blesková reakce prstu */
+}
+
+#gallery-modal .modal-body>button:active span {
+    color: var(--primary) !important; /* Problikne do lososové */
 }
 
 @media (hover: hover) {
@@ -1646,6 +1664,15 @@ button.is-active .icon-close {
     html, body {
         overflow-x: hidden;
     }
+}
+
+.offcanvas-body .nav-link:active,
+.btn:active {
+    color: var(--primary);
+    /* Barva při zmáčknutí */
+    transform: scale(0.95);
+    /* Tlačítko se lehce "zamáčkne" dovnitř */
+    transition: all 0.1s ease;
 }
 
 
