@@ -868,7 +868,7 @@
     integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
     crossorigin="anonymous"></script>
 
-
+  <!--offcanvas menu hamburger-->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const offcanvasElement = document.getElementById('offcanvasNavbar');
@@ -896,6 +896,28 @@
       }
     });
   </script>
+
+  <!--pause video off screen-->
+  <script>
+    const video = document.querySelector('.promo-video');
+
+    if (video) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Pokud video odroluje z obrazovky (není vidět)
+          if (!entry.isIntersecting) {
+            video.pause();
+            // Video teď stojí a pamatuje si (currentTime)
+          }
+        });
+      }, {
+        threshold: 0.3 // Zastaví se, jakmile zmizí většina videa
+      });
+
+      observer.observe(video);
+    }
+  </script>
+
 
   <!--script pro carousel-->
   <script>
