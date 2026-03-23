@@ -1215,7 +1215,7 @@ button.is-active .icon-close {
 /* Cílíme na ten button v modal-body */
 #gallery-modal .modal-body > button {
     top: 1.5rem;          /* Odsazení od horní hrany (pod menu) */
-    right: 2rem;        /* Odsazení zprava */
+    right: 1.5rem;     /* Odsazení zprava */
     z-index: 1060;      /* Musí být úplně nahoře */
     cursor: pointer;
     transition: transform 0.2s ease;
